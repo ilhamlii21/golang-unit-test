@@ -9,10 +9,34 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestSubTest(t *testing.T) {
+	t.Run("Ilham", func(t *testing.T) {
+		result := HelloWorld("Ilham")
+		require.Equal(t, "Hello Ilham", result, "Hasil Harusnya 'Hello Ilham'")
+
+	})
+	t.Run("Lii", func(t *testing.T) {
+		result := HelloWorld("Lii")
+		require.Equal(t, "Hii Lii", result, "Hasil Harusnya 'Hello Lii'")
+
+	})
+}
+
+func TestMain(m *testing.M) {
+	//before
+	fmt.Println("==UNIT TEST DIMULAI==")
+	m.Run()
+	//after
+	fmt.Println("==UNIT TEST SELESAI==")
+
+	//func TestMain(m *testing.M) berfungsi sebagai entry point untuk eksekusi semua unit test dalam package
+}
+
 func TestSkip(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		t.Skip("Tidak bisa berjalan di Windows")
 	}
+	//t.Skip berfungsi untuk membatalkan test
 
 	result := HelloWorld("Ilham")
 	require.Equal(t, "Hello Ilham", result, "Hasil Harusnya 'Hello Ilham'")
