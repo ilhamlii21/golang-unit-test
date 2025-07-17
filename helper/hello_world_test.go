@@ -3,13 +3,28 @@ package helper
 import (
 	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
+
+func TestHelloWorldAssert(t *testing.T) {
+	result := HelloWorld("Ilham")
+	assert.Equal(t, "Hello Ilham", result, "Hasil Harusnya 'Hello Ilham'")
+	fmt.Println("Test HelloWorldAssert dengan Assert Berhasil")
+}
+
+func TestHelloWorldRequire(t *testing.T) {
+	result := HelloWorld("Ilham")
+	require.Equal(t, "Hello Ilham", result, "Hasil Harusnya 'Hello Ilham'")
+	fmt.Println("Test HelloWorldAssert dengan Require Berhasil")
+}
 
 func TestHelloWorld(t *testing.T) {
 	result := HelloWorld("Ilham")
 
 	if result != "Hello Ilham" {
-		//if erro
+		//if error
 		// panic("Result salah / bukan Hello Ilham")
 
 		// t.Fail()
